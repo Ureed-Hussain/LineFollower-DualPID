@@ -25,6 +25,8 @@ The code also includes **high-priority pattern handling** (override rules) for s
 ---
 ## Path
 
+![WhatsApp Image 2026-02-10 at 10 33 33 PM](https://github.com/user-attachments/assets/ba59f131-2579-4030-aee2-84d14ea2a30b)
+
 
 The robot is designed to follow complex line paths, including:
 
@@ -36,7 +38,46 @@ The robot is designed to follow complex line paths, including:
 To handle these scenarios, the algorithm does not rely only on continuous PID correction.
 Instead, explicit sensor-pattern detection is used to override the PID when required, ensuring stability and preventing oscillations or line loss.
 
+
+## 🔌 Hardware Required
+
+- Arduino UNO  
+- 5x IR line sensors (digital output recommended)  
+- Motor driver (L298N / similar H-bridge)  
+- 2 DC motors + chassis  
+- Battery pack (sufficient current for motors)
+
+---
+
+## 🧷 Pin Mapping
+
+<img width="813" height="385" alt="image" src="https://github.com/user-attachments/assets/58928aaa-3496-4d0d-946b-5b032f7e8b85" />
+
+### Sensors
+| Sensor | Arduino Pin |
+|-------:|------------:|
+| LEFT2 (far left) | A4 |
+| LEFT1 | A3 |
+| CENTER | A2 |
+| RIGHT1 | A1 |
+| RIGHT2 (far right) | A0 |
+
+### Motor Driver
+| Motor | Pin | Type |
+|------:|----:|------|
+| Left ENA | 9  | PWM |
+| Left IN1 | 4  | DIR |
+| Left IN2 | 5  | DIR |
+| Right ENB | 10 | PWM |
+| Right IN3 | 6  | DIR |
+| Right IN4 | 7  | DIR |
+
+---
+
 ## 🧠 Control Logic Overview
+
+<img width="1411" height="826" alt="image" src="https://github.com/user-attachments/assets/0be2de93-11f8-4459-90a4-98cf13f62d5c" />
+
 
 ### 1) Priority Overrides (Pattern-Based)
 Before running the main PID loop, the robot checks **explicit sensor patterns** and triggers dedicated actions like:
@@ -67,38 +108,6 @@ If all sensors read `0` for too long, the robot pivots in the **last known direc
 
 ---
 
-## 🔌 Hardware Required
-
-- Arduino UNO  
-- 5x IR line sensors (digital output recommended)  
-- Motor driver (L298N / similar H-bridge)  
-- 2 DC motors + chassis  
-- Battery pack (sufficient current for motors)
-
----
-
-## 🧷 Pin Mapping
-
-### Sensors
-| Sensor | Arduino Pin |
-|-------:|------------:|
-| LEFT2 (far left) | A4 |
-| LEFT1 | A3 |
-| CENTER | A2 |
-| RIGHT1 | A1 |
-| RIGHT2 (far right) | A0 |
-
-### Motor Driver
-| Motor | Pin | Type |
-|------:|----:|------|
-| Left ENA | 9  | PWM |
-| Left IN1 | 4  | DIR |
-| Left IN2 | 5  | DIR |
-| Right ENB | 10 | PWM |
-| Right IN3 | 6  | DIR |
-| Right IN4 | 7  | DIR |
-
----
 
 ## ⚙️ Key Parameters
 
