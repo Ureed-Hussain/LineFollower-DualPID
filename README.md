@@ -121,3 +121,15 @@ If all sensors read `0` for too long, the robot pivots in the **last known direc
 float Kp = 25.0;
 float Ki = 0.0;
 float Kd = 15.0;
+
+// ====== Forward PID (to keep straight without oscillation) ======
+float f_Kp = 6.0;     // small proportional gain 6 best put 4 value when base_speed is 70
+float f_Kd = 5.0;     // small derivative gain 5
+float f_lastError = 0.0;
+unsigned long f_lastTime = 0;
+```
+
+There are many line-following codes available online, but most of them are not stable on complex paths.
+In this project, PID control is applied separately for forward motion and for turning, which significantly improves stability.
+As a result, the robot moves smoothly, consistently, and remains stable even on sharp turns and complex tracks.
+
