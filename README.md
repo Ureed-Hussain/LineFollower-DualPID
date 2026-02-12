@@ -1,5 +1,11 @@
 # LineFollower-DualPID
 Dual-PID controlled line follower with five IR sensors for stable and accurate tracking.
+
+
+
+https://github.com/user-attachments/assets/37573b4c-eabb-47d7-92f6-763e624f7748
+
+
 ---
 A robust Arduino UNO line-following robot designed for **complex tracks** (sharp turns, curves, intersections/parallel segments) using **5 IR sensors** and a **dual-PID control strategy**:
 - **Forward PID** for stable straight motion (reduced oscillation)
